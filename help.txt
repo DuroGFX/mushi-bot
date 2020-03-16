@@ -1,0 +1,44 @@
+ ______ __  __ ____  ______ _____  
+|  ____|  \/  |  _ \|  ____|  __ \ 
+| |__  | \  / | |_) | |__  | |  | |
+|  __| | |\/| |  _ <|  __| | |  | |
+| |____| |  | | |_) | |____| |__| |
+|______|_|  |_|____/|______|_____/ 
+                                    
+If you would like to add a new embed to the bot,  click "New File" and type "commands/(YOURCMD).js"
+Then, paste this format:
+
+
+const Discord = require("discord.js");
+const colors = require("../colors");
+const botconfig = require("../botconfig")
+
+module.exports.run = async (bot, message, args) => {
+  let EXAMPLEEMBED = new Discord.RichEmbed()
+        .setColor(colors.blue)
+        .setTitle("Whatever")
+        .addField("**Server Owner**", `${message.guild.owner}`, false)
+        .addField("**Member Count**", `${message.guild.memberCount}`, false)
+        .addField("**Bot Count**", `${message.guild.roles.get("687498488295981069").members.size}`, false)
+        .addField("**Need Help?**", `Do **>help** for a list of commands!`, false)
+        .setFooter(`skyclouds ip whenever`, bot.user.displayAvatarURL);
+        message.channel.send({embed: EXAMPLEEMBED});
+  };
+
+module.exports.help = {
+  name: "YOURCMD"
+};
+
+
+✵ Make sure that the spacing and everything is consistant to the 
+✵ Make sure you update the name (name: "YOURCMD") to the command you want.
+✵ Make sure to change "EXAMPLEEMBED" to the name of the embed, for example, HelloEmbed!
+  ✵ This applies to both "message.channel.send" and also "let HelpEmbed"
+
+- setColor is the colors! (Hard to tell, I know) You can find the list of colors in "colors.json" and to change the color simply change ".setColor(colors.yellow)" to something like ".setColor(colors.pink)"!
+- setTitle is the title of the embed! It's the big text at the top aka the title... You can change the "Advancius Help" To something such as "Hello World!"
+- addField is the actual things inside of the embed. The first string is the title, so you can change it to "**Hello**" and it will have Hello as the title, you can also add as many as you want!
+- setFooter you'd just leave it alone. It's basically the end of the embed that has the logo and says the IP
+- You can also add placeholders (such as ${message.guild.owner})
+
+✵ If you need any more help you can DM Duro#5232 on Discord!
